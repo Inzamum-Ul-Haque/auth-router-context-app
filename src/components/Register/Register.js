@@ -5,10 +5,11 @@ const Register = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
+    const name = event.name.value;
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(email, password);
+    console.log(name, email, password);
   };
 
   return (

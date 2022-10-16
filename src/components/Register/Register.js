@@ -52,6 +52,7 @@ const Register = () => {
                   type="text"
                   placeholder="username"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -63,6 +64,7 @@ const Register = () => {
                   type="email"
                   placeholder="email"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -74,6 +76,7 @@ const Register = () => {
                   type="password"
                   placeholder="password"
                   className="input input-bordered"
+                  required
                 />
                 <label className="label">
                   <Link to="/login" className="label-text-alt link link-hover">

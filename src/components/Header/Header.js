@@ -3,8 +3,13 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/UserContext";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
-  console.log(user);
+  const { user, signOutUser } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    signOutUser()
+      .then(() => {})
+      .catch((error) => console.error("Error ", error));
+  };
 
   return (
     <div>
@@ -20,7 +25,16 @@ const Header = () => {
           <Link className="btn btn-ghost normal-case text-xl" to="/register">
             Register
           </Link>
-          {user?.displayName && <p>{user.displayName}</p>}
+          {user?.email && <p>{user.email}</p>}
+          {user?.email ? (
+            <button onClick={handleLogOut} className="btn">
+              Log Out
+            </button>
+          ) : (
+            <Link to="/login">
+              <button className="btn">Log In</button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

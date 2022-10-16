@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/UserContext";
 
 const Login = () => {
+  const { signInUser } = useContext(AuthContext);
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(email, password);
+    signInUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.error("Error ", error);
+      });
   };
 
   return (
@@ -44,9 +54,9 @@ const Login = () => {
                   className="input input-bordered"
                 />
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
+                  <Link to="/login" className="label-text-alt link link-hover">
                     Forgot password?
-                  </a>
+                  </Link>
                 </label>
               </div>
               <div className="form-control mt-6">
